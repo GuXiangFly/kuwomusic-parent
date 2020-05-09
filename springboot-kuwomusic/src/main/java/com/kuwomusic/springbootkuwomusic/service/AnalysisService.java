@@ -29,16 +29,16 @@ public class AnalysisService {
 
 
     public Object getAnalysisResultByQuery(String query){
-        if (query == "musicLyricHotWord"){
+        if ("musicLyricHotWord".equals(query)){
             List<HotWordInfo> hotWordInfos = hotWordInfoMapper.selectAllByHotWordType("歌词热词");
             return hotWordInfos.get(0);
         }
-        if (query == "musicCommentHotWord"){
+        if ("musicCommentHotWord".equals(query)){
             List<HotWordInfo> hotWordInfos = hotWordInfoMapper.selectAllByHotWordType("评论热词");
             return hotWordInfos.get(0);
         }
 
-        if (query == "singerType"){
+        if ("singerType".equals(query)){
             List<AnalysisResultInfo> analysisResultInfos = analysisResultInfoMapper.selectAllByResultType("歌手类型热度");
             return analysisResultInfos.get(0);
         }
