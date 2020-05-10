@@ -1,9 +1,11 @@
 package com.kuwomusic.springbootkuwomusic.mapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 import com.kuwomusic.springbootkuwomusic.pojo.MusicInfo;
 
+@Mapper
 public interface MusicInfoMapper {
     int deleteByPrimaryKey(Integer id);
 

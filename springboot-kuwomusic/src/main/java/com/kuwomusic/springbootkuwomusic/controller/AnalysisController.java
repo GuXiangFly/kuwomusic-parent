@@ -31,5 +31,10 @@ public class AnalysisController {
         return ApiResult.success(analysisResultByQuery);
     }
 
+    @GetMapping("/getMusicTop30CommentResult")
+    public ApiResult getMusicTop30CommentResult(){
+        Object musicTop30Comment = analysisService.getMusicTop30Comment();
+        return ApiResult.success(musicTop30Comment);
+    }
 
 }

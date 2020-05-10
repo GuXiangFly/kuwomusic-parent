@@ -6,8 +6,10 @@ package com.kuwomusic.springbootkuwomusic.service;
 import com.alibaba.fastjson.JSON;
 import com.kuwomusic.springbootkuwomusic.mapper.AnalysisResultInfoMapper;
 import com.kuwomusic.springbootkuwomusic.mapper.HotWordInfoMapper;
+import com.kuwomusic.springbootkuwomusic.mapper.MusicInfoMapper;
 import com.kuwomusic.springbootkuwomusic.pojo.AnalysisResultInfo;
 import com.kuwomusic.springbootkuwomusic.pojo.HotWordInfo;
+import com.kuwomusic.springbootkuwomusic.pojo.MusicInfo;
 import com.kuwomusic.springbootkuwomusic.pojo.SingerTypeAndLikeWeight;
 import com.kuwomusic.springbootkuwomusic.pojo.TypeAndValueBo;
 import com.kuwomusic.springbootkuwomusic.response.HistogramResponseBo;
@@ -29,6 +31,9 @@ public class AnalysisService {
 
     @Autowired
     private HotWordInfoMapper hotWordInfoMapper;
+
+    @Autowired
+    private MusicInfoMapper musicInfoMapper;
 
 
 
@@ -72,5 +77,11 @@ public class AnalysisService {
             histogramResponseBo.getValueList().add(typeAndValueBo.getHotValue());
         }
         return  histogramResponseBo;
+    }
+
+
+    public Object getMusicTop30Comment(){
+        List<MusicInfo> musicInfos = musicInfoMapper.selectCommentTop30();
+        return musicInfos;
     }
 }
