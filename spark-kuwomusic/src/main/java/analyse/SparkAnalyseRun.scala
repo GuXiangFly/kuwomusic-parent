@@ -31,7 +31,7 @@ object SparkAnalyseRun {
       .appName("Spark Hive Example2")
       .config(config)
       .getOrCreate()
-   // AnalyseSinger.singerAnalyse(spark)
+    // AnalyseSinger.singerAnalyse(spark)
     musicLyricHotWord(spark)
     musicCommentHotWord(spark)
 
@@ -39,8 +39,7 @@ object SparkAnalyseRun {
   }
 
 
-
-   def musicLyricHotWord(spark: SparkSession): Unit = {
+  def musicLyricHotWord(spark: SparkSession): Unit = {
     val strings: Array[String] = readFromTxtByLine("/stopwords/baidu_stopwords.txt")
     strings.foreach(print)
 
@@ -76,10 +75,10 @@ object SparkAnalyseRun {
 
     val wordToSum: RDD[(String, Int)] = wordToOne.reduceByKey(_ + _)
 
-    val tuples: Array[(String, Int)] = wordToSum.sortBy(_._2, false).take(200)
+    val tuples: Array[(String, Int)] = wordToSum.sortBy(_._2, false).take(300)
 
     val resultList = new util.ArrayList[HotWordBean]
-    tuples.foreach(item =>{
+    tuples.foreach(item => {
       val hotWord = new HotWordBean(item._1, item._2)
       resultList.add(hotWord)
     })
@@ -89,14 +88,12 @@ object SparkAnalyseRun {
 
     println(jsonResult)
 
-    val hotWordInfo = new HotWordInfo(1,"歌词热词",jsonResult)
+    val hotWordInfo = new HotWordInfo(1, "歌词热词", jsonResult)
     HotWordInfoDAO.insertOrUpdate(hotWordInfo)
   }
 
 
-
-
-   def musicCommentHotWord(spark: SparkSession): Unit = {
+  def musicCommentHotWord(spark: SparkSession): Unit = {
     val strings: Array[String] = readFromTxtByLine("/stopwords/baidu_stopwords.txt")
     strings.foreach(print)
 
@@ -131,10 +128,10 @@ object SparkAnalyseRun {
 
     val wordToSum: RDD[(String, Int)] = wordToOne.reduceByKey(_ + _)
 
-    val tuples: Array[(String, Int)] = wordToSum.sortBy(_._2, false).take(200)
+    val tuples: Array[(String, Int)] = wordToSum.sortBy(_._2, false).take(300)
 
     val resultList = new util.ArrayList[HotWordBean]
-    tuples.foreach(item =>{
+    tuples.foreach(item => {
       val hotWord = new HotWordBean(item._1, item._2)
       resultList.add(hotWord)
     })
@@ -144,16 +141,15 @@ object SparkAnalyseRun {
 
     println(jsonResult)
 
-    val hotWordInfo = new HotWordInfo(1,"评论热词",jsonResult)
+    val hotWordInfo = new HotWordInfo(1, "评论热词", jsonResult)
     HotWordInfoDAO.insertOrUpdate(hotWordInfo)
   }
 
 
+  def readFromTxtByLine(filePath: String) = {
 
-  def readFromTxtByLine(filePath:String) = {
-
-    val stream : InputStream = getClass.getResourceAsStream(filePath)
-    val lines = scala.io.Source.fromInputStream( stream ).getLines.toArray
+    val stream: InputStream = getClass.getResourceAsStream(filePath)
+    val lines = scala.io.Source.fromInputStream(stream).getLines.toArray
     lines
   }
 

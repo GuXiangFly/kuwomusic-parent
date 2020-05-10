@@ -97,3 +97,9 @@ case class SingerTypeAndFavourably(
                               singer_type: String,
                        likeWeight: Int
                            )
+
+
+case class MusicTimeDistributionBo(
+                                    musicTimeLine: String,
+                                    musicCount: Int
+                                  )

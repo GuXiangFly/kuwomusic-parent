@@ -18,7 +18,6 @@ object AnalyseSinger {
   def main(args: Array[String]): Unit = {
     val config: SparkConf = new SparkConf().setMaster("local[1]").setAppName("SparkSQL_HIVE_Demo")
 
-    val favourablies = new util.ArrayList[SingerTypeAndFavourably]()
 
     val spark: SparkSession = SparkSession
       .builder()
@@ -26,6 +25,16 @@ object AnalyseSinger {
       .config(config)
       .enableHiveSupport()
       .getOrCreate()
+
+    analyseMusicSinger(spark)
+  }
+
+
+
+
+  def  analyseMusicSinger(spark:SparkSession) :Unit ={
+
+    val favourablies = new util.ArrayList[SingerTypeAndFavourably]()
 
     favourablies.add(singerSqlAction(spark, "欧美女"))
     favourablies.add(singerSqlAction(spark, "华语女"))
@@ -60,6 +69,7 @@ object AnalyseSinger {
     val favourably = new SingerTypeAndFavourably(singer_type, rows.toList(0).getDouble(0).toInt)
     println(favourably)
     favourably
-
   }
+
+
 }
