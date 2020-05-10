@@ -8,6 +8,7 @@ import com.kuwomusic.springbootkuwomusic.mapper.AnalysisResultInfoMapper;
 import com.kuwomusic.springbootkuwomusic.mapper.HotWordInfoMapper;
 import com.kuwomusic.springbootkuwomusic.pojo.AnalysisResultInfo;
 import com.kuwomusic.springbootkuwomusic.pojo.HotWordInfo;
+import com.kuwomusic.springbootkuwomusic.pojo.SingerTypeAndLikeWeight;
 import com.kuwomusic.springbootkuwomusic.pojo.TypeAndValueBo;
 import com.kuwomusic.springbootkuwomusic.response.HistogramResponseBo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +41,9 @@ public class AnalysisService {
             List<HotWordInfo> hotWordInfos = hotWordInfoMapper.selectAllByHotWordType("评论热词");
             return hotWordInfos.get(0);
         }
-
-
         return  null;
     }
+
 
 
     public Object getMusicTypeResult(String query){
@@ -53,8 +53,19 @@ public class AnalysisService {
         }
         AnalysisResultInfo analysisResultInfo = analysisResultInfos.get(0);
         String resultJson = analysisResultInfo.getResultJson();
-        List<TypeAndValueBo> typeAndValueBos = JSON.parseArray(resultJson, TypeAndValueBo.class);
 
+        if ("歌手类型热度".equals(query)){
+            List<SingerTypeAndLikeWeight> singerTypeAndLikeWeights = JSON.parseArray(resultJson, SingerTypeAndLikeWeight.class);
+            HistogramResponseBo histogramResponseBo = new HistogramResponseBo();
+            for (SingerTypeAndLikeWeight singerTypeAndLikeWeight : singerTypeAndLikeWeights) {
+                histogramResponseBo.getTypeList().add(singerTypeAndLikeWeight.getSinger_type());
+                histogramResponseBo.getValueList().add(singerTypeAndLikeWeight.getLikeWeight());
+            }
+            return  histogramResponseBo;
+        }
+
+
+        List<TypeAndValueBo> typeAndValueBos = JSON.parseArray(resultJson, TypeAndValueBo.class);
         HistogramResponseBo histogramResponseBo = new HistogramResponseBo();
         for (TypeAndValueBo typeAndValueBo : typeAndValueBos) {
             histogramResponseBo.getTypeList().add(typeAndValueBo.getTypeName());

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuwomusic.springbootkuwomusic.mapper.MusicInfoMapper">
+  <resultMap id="BaseResultMap" type="com.kuwomusic.springbootkuwomusic.pojo.MusicInfo">
+    <!--@mbg.generated-->
+    <!--@Table music_info-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="music_name" jdbcType="VARCHAR" property="musicName" />
+    <result column="singer_name" jdbcType="VARCHAR" property="singerName" />
+    <result column="music_duration_minute" jdbcType="VARCHAR" property="musicDurationMinute" />
+    <result column="music_duration_second" jdbcType="INTEGER" property="musicDurationSecond" />
+    <result column="music_url" jdbcType="VARCHAR" property="musicUrl" />
+    <result column="music_url_id" jdbcType="VARCHAR" property="musicUrlId" />
+    <result column="music_lyric" jdbcType="LONGVARCHAR" property="musicLyric" />
+    <result column="music_comment_count" jdbcType="INTEGER" property="musicCommentCount" />
+    <result column="music_comment" jdbcType="LONGVARCHAR" property="musicComment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, music_name, singer_name, music_duration_minute, music_duration_second, music_url, 
+    music_url_id, music_lyric, music_comment_count, music_comment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from music_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from music_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.kuwomusic.springbootkuwomusic.pojo.MusicInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into music_info (music_name, singer_name, music_duration_minute, 
+      music_duration_second, music_url, music_url_id, 
+      music_lyric, music_comment_count, music_comment
+      )
+    values (#{musicName,jdbcType=VARCHAR}, #{singerName,jdbcType=VARCHAR}, #{musicDurationMinute,jdbcType=VARCHAR}, 
+      #{musicDurationSecond,jdbcType=INTEGER}, #{musicUrl,jdbcType=VARCHAR}, #{musicUrlId,jdbcType=VARCHAR}, 
+      #{musicLyric,jdbcType=LONGVARCHAR}, #{musicCommentCount,jdbcType=INTEGER}, #{musicComment,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.kuwomusic.springbootkuwomusic.pojo.MusicInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into music_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="musicName != null">
+        music_name,
+      </if>
+      <if test="singerName != null">
+        singer_name,
+      </if>
+      <if test="musicDurationMinute != null">
+        music_duration_minute,
+      </if>
+      <if test="musicDurationSecond != null">
+        music_duration_second,
+      </if>
+      <if test="musicUrl != null">
+        music_url,
+      </if>
+      <if test="musicUrlId != null">
+        music_url_id,
+      </if>
+      <if test="musicLyric != null">
+        music_lyric,
+      </if>
+      <if test="musicCommentCount != null">
+        music_comment_count,
+      </if>
+      <if test="musicComment != null">
+        music_comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="musicName != null">
+        #{musicName,jdbcType=VARCHAR},
+      </if>
+      <if test="singerName != null">
+        #{singerName,jdbcType=VARCHAR},
+      </if>
+      <if test="musicDurationMinute != null">
+        #{musicDurationMinute,jdbcType=VARCHAR},
+      </if>
+      <if test="musicDurationSecond != null">
+        #{musicDurationSecond,jdbcType=INTEGER},
+      </if>
+      <if test="musicUrl != null">
+        #{musicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="musicUrlId != null">
+        #{musicUrlId,jdbcType=VARCHAR},
+      </if>
+      <if test="musicLyric != null">
+        #{musicLyric,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="musicCommentCount != null">
+        #{musicCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="musicComment != null">
+        #{musicComment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kuwomusic.springbootkuwomusic.pojo.MusicInfo">
+    <!--@mbg.generated-->
+    update music_info
+    <set>
+      <if test="musicName != null">
+        music_name = #{musicName,jdbcType=VARCHAR},
+      </if>
+      <if test="singerName != null">
+        singer_name = #{singerName,jdbcType=VARCHAR},
+      </if>
+      <if test="musicDurationMinute != null">
+        music_duration_minute = #{musicDurationMinute,jdbcType=VARCHAR},
+      </if>
+      <if test="musicDurationSecond != null">
+        music_duration_second = #{musicDurationSecond,jdbcType=INTEGER},
+      </if>
+      <if test="musicUrl != null">
+        music_url = #{musicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="musicUrlId != null">
+        music_url_id = #{musicUrlId,jdbcType=VARCHAR},
+      </if>
+      <if test="musicLyric != null">
+        music_lyric = #{musicLyric,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="musicCommentCount != null">
+        music_comment_count = #{musicCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="musicComment != null">
+        music_comment = #{musicComment,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kuwomusic.springbootkuwomusic.pojo.MusicInfo">
+    <!--@mbg.generated-->
+    update music_info
+    set music_name = #{musicName,jdbcType=VARCHAR},
+      singer_name = #{singerName,jdbcType=VARCHAR},
+      music_duration_minute = #{musicDurationMinute,jdbcType=VARCHAR},
+      music_duration_second = #{musicDurationSecond,jdbcType=INTEGER},
+      music_url = #{musicUrl,jdbcType=VARCHAR},
+      music_url_id = #{musicUrlId,jdbcType=VARCHAR},
+      music_lyric = #{musicLyric,jdbcType=LONGVARCHAR},
+      music_comment_count = #{musicCommentCount,jdbcType=INTEGER},
+      music_comment = #{musicComment,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2020-05-10-->
+  <select id="selectCommentTop30" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from music_info
+        order by music_comment_count desc limit 30
+    </select>
+</mapper>
