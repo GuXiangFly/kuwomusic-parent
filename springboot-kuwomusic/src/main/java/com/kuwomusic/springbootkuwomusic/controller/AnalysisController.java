@@ -24,4 +24,12 @@ public class AnalysisController {
         return ApiResult.success(analysisResultByQuery);
     }
 
+
+    @GetMapping("/getMusicTypeResult")
+    public ApiResult getMusicTypeResult(String query){
+        Object analysisResultByQuery = analysisService.getMusicTypeResult(query);
+        return ApiResult.success(analysisResultByQuery);
+    }
+
+
 }

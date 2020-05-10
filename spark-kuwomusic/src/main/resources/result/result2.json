@@ -1,0 +1,61 @@
+[
+  [
+    {"typeName": "伤感", "hotValue": "435331"},
+    {"typeName": "放松", "hotValue": "235346"},
+    {"typeName": "励志", "hotValue": "124235"},
+    {"typeName": "开心", "hotValue": "543453"},
+    {"typeName": "甜蜜", "hotValue": "123125"},
+    {"typeName": "兴奋", "hotValue": "435345"},
+    {"typeName": "安静", "hotValue": "346334"},
+    {"typeName": "治愈", "hotValue": "536534"},
+    {"typeName": "寂寞", "hotValue": "234236"},
+    {"typeName": "思念", "hotValue": "635634"}
+  ],
+
+  [
+    {"typeName": "开车", "hotValue": "123124"},
+    {"typeName": "运动", "hotValue": "632452"},
+    {"typeName": "睡前", "hotValue": "234256"},
+    {"typeName": "跳舞", "hotValue": "436346"},
+    {"typeName": "学习", "hotValue": "235346"},
+    {"typeName": "清晨", "hotValue": "456352"},
+    {"typeName": "夜店", "hotValue": "235346"},
+    {"typeName": "校园", "hotValue": "546324"},
+    {"typeName": "亲热", "hotValue": "246345"},
+    {"typeName": "咖啡店", "hotValue": "356344"},
+    {"typeName": "旅行", "hotValue": "356344"},
+    {"typeName": "散步", "hotValue": "464443"},
+    {"typeName": "工作", "hotValue": "353247"},
+    {"typeName": "婚礼", "hotValue": "128542"}
+  ],
+  [
+    {"typeName": "70后", "hotValue": "21353"},
+    {"typeName": "80后", "hotValue": "23456"},
+    {"typeName": "90后", "hotValue": "54674"},
+    {"typeName": "00后", "hotValue": "34577"},
+    {"typeName": "10后", "hotValue": "23465"}
+  ],
+  [
+    {"typeName": "流行", "hotValue": "823156"},
+    {"typeName": "电子", "hotValue": "346457"},
+    {"typeName": "摇滚", "hotValue": "345377"},
+    {"typeName": "民歌", "hotValue": "242566"},
+    {"typeName": "民谣", "hotValue": "457642"},
+    {"typeName": "古典", "hotValue": "363452"},
+    {"typeName": "嘻哈", "hotValue": "132453"},
+    {"typeName": "乡村", "hotValue": "123454"},
+    {"typeName": "爵士", "hotValue": "34565"},
+    {"typeName": "R&B", "hotValue": "64543"},
+    {"typeName": "世界", "hotValue": "35346"}
+
+  ],
+  [
+    {"typeName": "华语", "hotValue": "245744"},
+    {"typeName": "欧美", "hotValue": "43456"},
+    {"typeName": "韩语", "hotValue": "123124"},
+    {"typeName": "粤语", "hotValue": "543243"},
+    {"typeName": "日语", "hotValue": "454324"},
+    {"typeName": "小语种", "hotValue": "23425"}
+  ]
+
+]
